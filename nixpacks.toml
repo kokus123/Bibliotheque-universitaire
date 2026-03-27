@@ -1,0 +1,7 @@
+[variables]
+    PHP_VERSION = '8.4'
+    NIXPACKS_PHP_FALLBACK_VERSION = '8.4'
+
+[phases.install]
+    dependsOn = ['setup']
+    cmds = ['composer install --optimize-autoloader --no-scripts --no-interaction --ignore-platform-reqs']
