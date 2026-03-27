@@ -47,14 +47,56 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Livres
-        $livres = [
-            ['titre' => 'Introduction aux algorithmes', 'auteur' => 'Thomas Cormen', 'isbn' => '978-2-10-070313-8', 'categorie' => 'Informatique', 'nombre_exemplaires' => 3],
-            ['titre' => 'Le Petit Prince',              'auteur' => 'Antoine de Saint-Exupéry', 'isbn' => '978-2-07-040850-4', 'categorie' => 'Littérature', 'nombre_exemplaires' => 2],
-            ['titre' => 'Mathématiques pour l\'ingénieur', 'auteur' => 'Jean-Pierre Ramis', 'isbn' => '978-2-10-071234-5', 'categorie' => 'Mathématiques', 'nombre_exemplaires' => 4],
-            ['titre' => 'Base de données relationnelles', 'auteur' => 'Chris Date', 'isbn' => '978-2-10-072345-6', 'categorie' => 'Informatique', 'nombre_exemplaires' => 2],
-            ['titre' => 'Physique générale', 'auteur' => 'Serway & Jewett', 'isbn' => '978-2-10-073456-7', 'categorie' => 'Physique', 'nombre_exemplaires' => 5],
-            ['titre' => 'Droit civil', 'auteur' => 'Jean Carbonnier', 'isbn' => '978-2-13-074567-8', 'categorie' => 'Droit', 'nombre_exemplaires' => 3],
-        ];
+       $livres = [
+    [
+        'titre' => 'Introduction aux algorithmes', 
+        'auteur' => 'Thomas Cormen', 
+        'isbn' => '978-2-10-070313-8', 
+        'categorie' => 'Informatique', 
+        'nombre_exemplaires' => 3,
+        'image' => 'https://m.media-amazon.com/images/I/71Oyxm8IGWL._SL1500_.jpg'
+    ],
+    [
+        'titre' => 'Le Petit Prince', 
+        'auteur' => 'Antoine de Saint-Exupéry', 
+        'isbn' => '978-2-07-040850-4', 
+        'categorie' => 'Littérature', 
+        'nombre_exemplaires' => 2,
+        'image' => 'https://m.media-amazon.com/images/I/71Oyxm8IGWL._SL1500_.jpg'
+    ],
+    [
+        'titre' => 'Mathématiques pour l\'ingénieur', 
+        'auteur' => 'Miguel', // C'est toi l'auteur !
+        'isbn' => '978-2-10-071234-5', 
+        'categorie' => 'Mathématiques', 
+        'nombre_exemplaires' => 4,
+        'image' => 'https://m.media-amazon.com/images/I/71YJmK1N8uL._SL1360_.jpg'
+    ],
+    [
+        'titre' => 'Base de données relationnelles', 
+        'auteur' => 'Chris Date', 
+        'isbn' => '978-2-10-072345-6', 
+        'categorie' => 'Informatique', 
+        'nombre_exemplaires' => 2,
+        'image' => 'https://m.media-amazon.com/images/I/41-N7mEAbfL.jpg'
+    ],
+    [
+        'titre' => 'Physique générale', 
+        'auteur' => 'Serway & Jewett', 
+        'isbn' => '978-2-10-073456-7', 
+        'categorie' => 'Physique', 
+        'nombre_exemplaires' => 5,
+        'image' => 'https://m.media-amazon.com/images/I/81dG7L+HreL._SL1500_.jpg'
+    ],
+    [
+        'titre' => 'Droit civil', 
+        'auteur' => 'Jean Carbonnier', 
+        'isbn' => '978-2-13-074567-8', 
+        'categorie' => 'Droit', 
+        'nombre_exemplaires' => 3,
+        'image' => 'https://m.media-amazon.com/images/I/51tZ6H0wJ2L.jpg'
+    ],
+];
 
         foreach ($livres as $livre) {
             $livre['exemplaires_disponibles'] = $livre['nombre_exemplaires'];
