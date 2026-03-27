@@ -1,0 +1,60 @@
+<svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff;">
+
+  <!-- Traits décoratifs dorés -->
+  <line x1="60" y1="46" x2="340" y2="46" stroke="#c9a84c" stroke-width="0.8" opacity="0.7"/>
+  <line x1="60" y1="54" x2="340" y2="54" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- BIBLIOGES -->
+  <text x="200" y="42" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="30" font-weight="700"
+        fill="#0f1f2e"
+        letter-spacing="8">BIBLIOGES</text>
+
+  <!-- Sous-titre -->
+  <text x="200" y="74" text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="10" font-weight="400"
+        fill="#888"
+        letter-spacing="4.5">BIBLIOTHÈQUE UNIVERSITAIRE</text>
+
+  <!-- ══ LOGO MAISON + LIVRES ══ -->
+  <g transform="translate(200, 190)">
+
+    <!-- Livre ouvert bas -->
+    <path d="M-85,62 Q-42,48 0,53 Q42,48 85,62 L85,76 Q42,62 0,67 Q-42,62 -85,76 Z"
+          fill="none" stroke="#0f1f2e" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Toit -->
+    <polyline points="-98,8 0,-62 98,8"
+              fill="none" stroke="#0f1f2e" stroke-width="4"
+              stroke-linejoin="round" stroke-linecap="round"/>
+
+    <!-- Livre 1 -->
+    <rect x="-70" y="12" width="15" height="36" rx="1" fill="#0f1f2e"/>
+    <rect x="-68" y="15" width="4" height="30" fill="white" opacity="0.25"/>
+
+    <!-- Livre 2 -->
+    <rect x="-50" y="-5" width="18" height="53" rx="1" fill="none" stroke="#0f1f2e" stroke-width="2.2"/>
+
+    <!-- Livre 3 (grand) -->
+    <rect x="-26" y="-16" width="22" height="64" rx="1" fill="#0f1f2e"/>
+    <rect x="-24" y="-13" width="5" height="58" fill="white" opacity="0.2"/>
+
+    <!-- Livre 4 -->
+    <rect x="2" y="-4" width="18" height="52" rx="1" fill="none" stroke="#0f1f2e" stroke-width="2.2"/>
+
+    <!-- Livre 5 -->
+    <rect x="26" y="10" width="15" height="38" rx="1" fill="#0f1f2e"/>
+    <rect x="28" y="13" width="4" height="32" fill="white" opacity="0.25"/>
+
+    <!-- Livre 6 petit -->
+    <rect x="47" y="20" width="13" height="28" rx="1" fill="none" stroke="#0f1f2e" stroke-width="2"/>
+
+  </g>
+
+  <!-- Trait doré bas -->
+  <line x1="60" y1="298" x2="340" y2="298" stroke="#c9a84c" stroke-width="0.8" opacity="0.7"/>
+  <line x1="60" y1="303" x2="340" y2="303" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+
+</svg>
