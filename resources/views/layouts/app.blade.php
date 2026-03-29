@@ -6,12 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.svg.svg') }}">
     <title>@yield('title', 'Bibliotheque Universitaire')</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
     <style>
-        /* LIGHT MODE */
         :root, [data-theme="light"] {
             --navy:        #0f1f2e;
             --navy-mid:    #162840;
@@ -35,7 +34,6 @@
             --info:        #2563eb;
         }
 
-        /* DARK MODE */
         [data-theme="dark"] {
             --navy:        #0a0f1a;
             --navy-mid:    #0f1620;
@@ -76,9 +74,9 @@
             top: 0; left: 0;
             display: flex;
             flex-direction: column;
-            z-index: 200;
+            z-index: 300;
             border-right: 1px solid rgba(201,168,76,.12);
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .sidebar::before {
@@ -103,10 +101,7 @@
             margin: 0 auto 12px auto;
         }
 
-        .logo-img-wrap img {
-            width: 100%; height: 100%;
-            object-fit: contain;
-        }
+        .logo-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
 
         .sidebar-logo-title {
             font-family: 'Cormorant', serif;
@@ -215,16 +210,7 @@
         }
 
         .user-info { flex: 1; min-width: 0; }
-
-        .user-name {
-            font-size: 0.83rem;
-            font-weight: 600;
-            color: rgba(255,255,255,.9);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
+        .user-name { font-size: 0.83rem; font-weight: 600; color: rgba(255,255,255,.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .user-role { font-size: 0.68rem; color: var(--gold); text-transform: capitalize; margin-top: 1px; }
 
         .logout-form { margin: 0; }
@@ -243,6 +229,19 @@
         }
 
         .logout-btn:hover { color: #fff; background: rgba(220,38,38,.2); }
+
+        /* OVERLAY mobile */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 299;
+            backdrop-filter: blur(2px);
+        }
+
+        .sidebar-overlay.active { display: block; }
 
         /* MAIN */
         .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
@@ -263,6 +262,23 @@
         }
 
         .topbar-left { display: flex; align-items: center; gap: 12px; }
+
+        /* Bouton hamburger */
+        .hamburger-btn {
+            display: none;
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .hamburger-btn:hover { background: var(--gold-pale); color: var(--gold); border-color: var(--gold); }
 
         .topbar-title {
             font-family: 'Cormorant', serif;
@@ -286,7 +302,6 @@
 
         .topbar-actions { display: flex; gap: 8px; align-items: center; }
 
-        /* Bouton dark mode */
         .theme-btn {
             width: 36px; height: 36px;
             border-radius: 8px;
@@ -448,11 +463,14 @@
         .toast-close { background: none; border: none; padding: 12px 14px 0 4px; font-size: 1rem; color: var(--text-muted); cursor: pointer; align-self: flex-start; transition: color 0.18s; }
         .toast-close:hover { color: var(--text); }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
             .main { margin-left: 0; }
-            .topbar { padding: 0 20px; }
-            .content { padding: 20px; }
+            .topbar { padding: 0 16px; }
+            .hamburger-btn { display: flex; }
+            .content { padding: 16px; }
             .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
             #toast-container { right: 12px; left: 12px; min-width: unset; }
         }
@@ -462,10 +480,13 @@
 </head>
 <body>
 
-<aside class="sidebar">
+{{-- Overlay mobile --}}
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
         <div class="logo-img-wrap">
-            <img src="{{ asset('images/logo.svg.svg') }}" alt="Biblioges">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Biblioges">
         </div>
         <h1 class="sidebar-logo-title">BIBLIOGES</h1>
         <p>Bibliotheque Universitaire</p>
@@ -539,6 +560,9 @@
 <main class="main">
     <div class="topbar">
         <div class="topbar-left">
+            <button class="hamburger-btn" id="hamburgerBtn" title="Menu">
+                <i class="bi bi-list"></i>
+            </button>
             <div class="topbar-title">@yield('page-title', 'Bibliotheque')</div>
             @hasSection('page-badge')
                 <span class="topbar-badge">@yield('page-badge')</span>
@@ -590,6 +614,7 @@
 </div>
 
 <script>
+// DARK MODE
 const html      = document.documentElement;
 const themeBtn  = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
@@ -597,21 +622,46 @@ const themeIcon = document.getElementById('themeIcon');
 function applyTheme(theme) {
     html.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    if (theme === 'dark') {
-        themeIcon.className = 'bi bi-sun';
-        themeBtn.title = 'Mode clair';
-    } else {
-        themeIcon.className = 'bi bi-moon-stars';
-        themeBtn.title = 'Mode sombre';
-    }
+    themeIcon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
+    themeBtn.title = theme === 'dark' ? 'Mode clair' : 'Mode sombre';
 }
 
 applyTheme(localStorage.getItem('theme') || 'light');
-
 themeBtn.addEventListener('click', function() {
     applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
 
+// HAMBURGER MENU
+const sidebar         = document.getElementById('sidebar');
+const hamburgerBtn    = document.getElementById('hamburgerBtn');
+const sidebarOverlay  = document.getElementById('sidebarOverlay');
+
+function openSidebar() {
+    sidebar.classList.add('open');
+    sidebarOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+hamburgerBtn.addEventListener('click', function() {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+});
+
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// Fermer la sidebar quand on clique sur un lien (mobile)
+document.querySelectorAll('.nav-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+        if (window.innerWidth <= 768) closeSidebar();
+    });
+});
+
+// TOASTS
 function closeToast(el) {
     el.style.opacity = '0';
     el.style.transform = 'translateX(30px) scale(0.97)';
