@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
         'isbn' => '978-2-10-070313-8', 
         'categorie' => 'Informatique', 
         'nombre_exemplaires' => 3,
-        'image' => 'https://m.media-amazon.com/images/I/71Oyxm8IGWL._SL1500_.jpg'
+        'couverture' => 'https://m.media-amazon.com/images/I/71Oyxm8IGWL._SL1500_.jpg'
     ],
     [
         'titre' => 'Le Petit Prince', 
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         'isbn' => '978-2-07-040850-4', 
         'categorie' => 'Littérature', 
         'nombre_exemplaires' => 2,
-        'image' => 'https://m.media-amazon.com/images/I/71Oyxm8IGWL._SL1500_.jpg'
+        'couverture' => 'https://m.media-amazon.com/images/I/71Oyxm8IGWL._SL1500_.jpg'
     ],
     [
         'titre' => 'Mathématiques pour l\'ingénieur', 
@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
         'isbn' => '978-2-10-071234-5', 
         'categorie' => 'Mathématiques', 
         'nombre_exemplaires' => 4,
-        'image' => 'https://m.media-amazon.com/images/I/71YJmK1N8uL._SL1360_.jpg'
+        'couverture' => 'https://m.media-amazon.com/images/I/71YJmK1N8uL._SL1360_.jpg'
     ],
     [
         'titre' => 'Base de données relationnelles', 
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         'isbn' => '978-2-10-072345-6', 
         'categorie' => 'Informatique', 
         'nombre_exemplaires' => 2,
-        'image' => 'https://m.media-amazon.com/images/I/41-N7mEAbfL.jpg'
+        'couverture' => 'https://m.media-amazon.com/images/I/41-N7mEAbfL.jpg'
     ],
     [
         'titre' => 'Physique générale', 
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
         'isbn' => '978-2-10-073456-7', 
         'categorie' => 'Physique', 
         'nombre_exemplaires' => 5,
-        'image' => 'https://m.media-amazon.com/images/I/81dG7L+HreL._SL1500_.jpg'
+        'couverture' => 'https://m.media-amazon.com/images/I/81dG7L+HreL._SL1500_.jpg'
     ],
     [
         'titre' => 'Droit civil', 
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
         'isbn' => '978-2-13-074567-8', 
         'categorie' => 'Droit', 
         'nombre_exemplaires' => 3,
-        'image' => 'https://m.media-amazon.com/images/I/51tZ6H0wJ2L.jpg'
+        'couverture' => 'https://m.media-amazon.com/images/I/51tZ6H0wJ2L.jpg'
     ],
 ];
 
