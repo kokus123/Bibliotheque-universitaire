@@ -486,7 +486,7 @@
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
         <div class="logo-img-wrap">
-            <img src="{{ asset('images/logo.jpg') }}" alt="Biblioges">
+            <img src="{{ asset('images/logo.svg.svg') }}" alt="Biblioges">
         </div>
         <h1 class="sidebar-logo-title">BIBLIOGES</h1>
         <p>Bibliotheque Universitaire</p>
